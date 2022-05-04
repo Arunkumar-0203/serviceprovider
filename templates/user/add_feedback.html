@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    {% if message %}
+<script>
+alert("{{ message }}")
+</script>
+{% endif %}
+<!-- Header End====================================================================== -->
+<div id="mainBody">
+	<div class="container">
+	<div class="row">
+<!-- Sidebar ================================================== -->
+
+<!-- Sidebar end=============================================== -->
+	<div class="span9">
+
+	<h3> GIVE YOUR FEEDBACK</h3>
+	<hr class="soft"/>
+	
+	<div class="row">
+
+		<div class="span4">
+			<div class="well">
+			<h5>ADD YOUR FEEDBACK</h5>
+			<form action="" method="post">
+                {% csrf_token %}
+			  <div class="control-group">
+{#				<label class="control-label" for="inputEmail1">User Name</label>#}
+				<div class="controls">
+				  <input class="span3" name="sh_id" value="{{ S.id }}" required="" type="hidden" id="inputEmail1" placeholder="">
+				</div>
+			  </div>
+			  <div class="control-group">
+				<label class="control-label"  for="inputPassword1">Enetr your feedback</label>
+				<div class="controls">
+				  <textarea name="message" required="" cols="26" rows="3" placeholder=""/></textarea>
+				</div>
+			  </div>
+			  <div class="control-group">
+				<div class="controls">
+				  <button type="submit" class="btn">submit</button>
+				</div>
+			  </div>
+			</form>
+		</div>
+		</div>
+	</div>	
+	
+</div>
+</div></div>
+</div>
+<!-- MainBody End ============================= -->
+{% endblock %}

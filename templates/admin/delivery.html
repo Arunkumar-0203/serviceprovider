@@ -1,0 +1,61 @@
+{% extends 'admin/admin_base.html' %}
+{% load static %}
+{% block content %}
+    {% if message %}
+<script>
+alert("{{ message }}")
+</script>
+{% endif %}
+<!-- Header End====================================================================== -->
+<div id="carouselBlk">
+	<div id="myCarousel" >
+		<div class="carousel-inner">
+		  <div class="item active">
+		  <div class="container">
+			<a href="register.html"><img style="width:100%" src="{% static 'themes/images/carousel/slider1.jpg' %}" alt="special offers"/></a>
+			<div class="carousel-caption">
+				  <h4>Second Thumbnail label</h4>
+				  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+				</div>
+		  </div>
+		  </div>
+
+		</div>
+		<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+		<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+	  </div> 
+</div>
+<div id="mainBody" style="padding-left: 180px;">
+	<table class="table table-bordered table-striped table-hover" style="background-color: #002633;width: 1000px;">
+
+                                 <th class="success" style="color: black;">User Name</th>
+                                 <th class="success" style="color: black;">Email</th>
+                                 <th class="success" style="color: black;">Contact Number</th>
+                                 <th class="success" style="color: black;">Address</th>
+                                 <th class="success" style="color: black;">Place</th>
+                                 <th class="success" style="color: black;">Date Of Birth</th>
+
+
+{#                                 <th class="success" style="color: black;">Approve</th>#}
+                                 <th class="success" style="color: black;">Reject</th>
+                                 {% for d in dl %}
+
+                                <tr style="background-color:white;width: 700px;">
+                                    <td>{{ d.user.first_name}}</td>
+                                    <td>{{ d.user.email}}</td>
+                                    <td>{{ d.PHONE }}</td>
+                                    <td>{{ d.ADDRESS }}</td>
+                                    <td>{{ d.PLACE }}</td>
+                                    <td>{{ d.DOB }}</td>
+
+
+{#                                    <td><button style="background-color:lightslategray"><a href="approve?id={{ d.user_id}}" class=" btn btn-success" style="color:black">Approve</a></button></td>#}
+                                    <td><button style="background-color:lightslategray"><a href="reject?id={{ d.user_id}}" class=" btn btn-danger" style="color:black">Reject</a></button></td>
+
+                                </tr>
+
+
+                              {% endfor %}
+                            </table>
+</div>
+{% endblock %}

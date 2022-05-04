@@ -1,0 +1,60 @@
+{% extends 'user/user_base.html' %}
+{% load static %}
+{% block content %}
+<!-- Header End====================================================================== -->
+<div id="carouselBlk">
+	<div id="myCarousel" >
+		<div class="carousel-inner">
+		  <div class="item active">
+		  <div class="container">
+			<a href="#"><img style="width:100%" src="{% static 'themes/images/carousel/slider1.jpg' %}" alt="special offers"/></a>
+			<div class="carousel-caption">
+				  <h4>Second Thumbnail label</h4>
+				  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+				</div>
+		  </div>
+		  </div>
+
+		</div>
+		<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+		<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+	  </div>
+</div>
+<div id="mainBody">
+	<div class="container">
+	<div class="row">
+<!-- Sidebar ================================================== -->
+<!-- Sidebar end=============================================== -->
+
+		<h4>Latest Products </h4>
+			  <ul class="thumbnails">
+               {% for i in pro %}
+				<li class="span3">
+				  <div class="thumbnail">
+					<a  href="#"><img style="max-height:80px;max-width: 80px;" src="{{ i.img.url }}" alt=""/></a>
+					<div class="caption">
+					  <h5>{{ i.pname }}</h5>
+					  <p>
+						Brand Nmae:- {{ i.bname }}
+					  </p>
+                        <p>
+						Shop Nmae:- {{ i.user.first_name }}
+					  </p>
+
+					  <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="addcart?id={{ i.id }}">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">{{ i.price }}</a></h4>
+
+					</div>
+{#                      <button style="background-color:white;"><a href="prorejects?id={{ i.id }}" class=" btn btn-danger" style="color:black">Reject</a></button>#}
+{#                      <button style="background-color:white;"><a href="update?id={{ i.id }}" class=" btn btn-danger" style="color:black">Update</a></button>#}
+{#                      <button style="background-color:white;"><a href="update?id={{ i.id }}" class=" btn btn-danger" style="color:black">Buy Now</a></button>#}
+				  </div>
+				</li>
+                  {% endfor %}
+
+			  </ul>
+
+		</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

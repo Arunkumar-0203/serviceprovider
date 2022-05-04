@@ -1,0 +1,74 @@
+{% extends 'shop/shop_base.html' %}
+{% load static %}
+{% block content %}
+    {% if message %}
+<script>
+alert("{{ message }}")
+</script>
+{% endif %}
+<!-- Header End====================================================================== -->
+<div id="mainBody">
+	<div class="container">
+	<div class="row">
+<!-- Sidebar ================================================== -->
+
+<!-- Sidebar end=============================================== -->
+	<div class="span9">
+
+	<h3>ADD CATEGORY OF PRODUCTS</h3>
+	<hr class="soft"/>
+	
+	<div class="row">
+        <div class="span4">
+			<div class="well">
+			<h5>CREATE YOUR ACCOUNT</h5><br/>
+			Enter Category of all products<br/><br/><br/>
+			<form action="" method="post">
+                {% csrf_token %}
+			  <div class="control-group">
+				<label class="control-label" for="inputEmail0">Ctegory</label>
+				<div class="controls">
+				  <input class="span3"  type="text" required="" name="CATEGORY" placeholder="category">
+				</div>
+			  </div>
+			  <div class="controls">
+			  <button type="submit" class="btn block">ADD CATEGORY</button>
+			  </div>
+			</form>
+		</div>
+		</div>
+
+		<div class="span5">
+{#			<div class="well">#}
+			<h5>ALL CATEGORY</h5>
+        <form action=""method="post">
+			<table class="table table-bordered table-striped table-hover" style="background-color: #002633;width: 300px;">
+
+                                 <th class="success" style="color: black;">Ctegory</th>
+
+                                 <th class="success" style="color: black;">Reject</th>
+                                 {% for c in cteg %}
+
+                                <tr style="background-color:white;width: 700px;">
+                                    <td>{{ c.Category}}</td>
+
+
+
+{#                                    <td><button style="background-color:lightslategray"><a href="approve?id={{ us.user_id}}" class=" btn btn-success" style="color:black">Approve</a></button></td>#}
+                                    <td><button style="background-color:lightslategray"><a href="reject?id={{ c.id}}" class=" btn btn-danger" style="color:black">Reject</a></button></td>
+
+                                </tr>
+
+
+                              {% endfor %}
+                            </table>
+        </form>
+		</div>
+		</div>
+	</div>	
+	
+</div>
+</div></div>
+</div>
+<!-- MainBody End ============================= -->
+{% endblock %}

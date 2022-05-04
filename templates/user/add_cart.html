@@ -1,0 +1,57 @@
+{% extends 'user/user_base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Header End====================================================================== -->
+<div id="mainBody">
+	<div class="container">
+	<div class="row">
+<!-- Sidebar ================================================== -->
+
+<!-- Sidebar end=============================================== -->
+	<div class="span9">
+
+
+
+	<div class="row">
+			<div id="gallery" class="span3">
+            <a href="#" title="#">
+				<img src="{{ prd.img.url }}" style="width:100%" alt="Fujifilm FinePix S2950 Digital Camera"/>
+            </a>
+			<div id="differentview" class="moreOptopm carousel slide">
+
+              </div>
+
+
+			</div>
+			<div class="span6">
+				<h3>Product Name : {{ prd.pname }}</h3>
+				<h3>Brand Name : {{ prd.bname }}</h3>
+				<hr class="soft"/>
+				<form class="form-horizontal qtyFrm" action="" method="post">
+                    {% csrf_token %}
+				  <div class="control-group">
+					<label class="control-label"><span>Rs: {{ prd.price }}</span></label>
+					<div class="controls">
+					<input type="hidden" name="id" value="{{ prd.id }}" class="span1" placeholder=""/>
+                        <input type="hidden" name="prc" value="{{ prd.price }}" class="span1" placeholder=""/>
+                        <input type="number"  name="quantity" class="span1" placeholder="Qty."/>
+
+
+					</div>
+                     <a href="addcart" ><button  type="submit" class="btn btn-large btn-primary pull-right"> Add to cart <i class=" icon-shopping-cart"></i></button></a>
+
+
+				  </div>
+                    <button style="background-color:lightslategray"><a href="checkout?id={{ prd.id }}" class=" btn btn-danger" style="color:black">Buy Now</a></button>
+				</form>
+
+
+	</div>
+</div>
+</div> </div>
+</div>
+<!-- MainBody End ============================= -->
+<!-- Footer ================================================================== -->
+
+{% endblock %}

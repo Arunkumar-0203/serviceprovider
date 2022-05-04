@@ -1,0 +1,97 @@
+{% extends 'shop/shop_base.html' %}
+{% load static %}
+{% block content %}
+    {% if message %}
+<script>
+alert("{{ message }}")
+</script>
+{% endif %}
+<!-- Header End====================================================================== -->
+<div id="mainBody">
+	<div class="container">
+	<div class="row">
+<!-- Sidebar ================================================== -->
+
+<!-- Sidebar end=============================================== -->
+	<div class="span9">
+{#    <ul class="breadcrumb">#}
+{#		<li><a href="adminindex.html">Home</a> <span class="divider">/</span></li>#}
+{#		<li class="active">Registration</li>#}
+{#    </ul>#}
+	<h3> ADD PRODUCTS HERE</h3>
+	<div class="well">
+
+	<form class="form-horizontal" action="" method="post" enctype="multipart/form-data" >
+        {% csrf_token %}
+		<h4>ADD PRODUCTS DETAILS</h4>
+		<div class="control-group">
+{#		<label class="control-label">Title <sup>*</sup></label>#}
+		<div class="controls">
+
+		</div>
+		</div>
+        <div class="control-group">
+			       <label class="control-label" for="inputFname1">Slect Category  <sup>*</sup></label>
+                   <div class="controls">
+                        <select name="cate" id="">{% for h in cate %}
+                         <option value="{{ h.id }}">{{ h.Category }}</option>
+                           {% endfor %}
+                         </select>
+                       </div>
+
+		 </div>
+
+		<div class="control-group">
+			<label class="control-label" for="inputFname1">Product Name <sup>*</sup></label>
+			<div class="controls">
+			  <input type="text" name="pname" required=""  placeholder="Product Name">
+			</div>
+		 </div>
+
+		<div class="control-group">
+		<label class="control-label" for="input_email">Brand Name<sup>*</sup></label>
+		<div class="controls">
+		  <input type="text" required="" name="bname"  placeholder="Brand Name">
+		</div>
+	  </div>	  
+	<div class="control-group">
+		<label class="control-label" for="inputPassword1">Price <sup>*</sup></label>
+		<div class="controls">
+		  <input type="number" required="" name="price"  placeholder="Price">
+		</div>
+	  </div>
+        <div class="control-group">
+		<label class="control-label" for="inputPassword1">Stock <sup>*</sup></label>
+		<div class="controls">
+		  <input type="number" required="" name="stock"  placeholder="Stock">
+		</div>
+	  </div>
+		<div class="control-group">
+		<label class="control-label">Image <sup>*</sup></label>
+		 <div class="controls">
+			  <input required="" name="image" type="file"  placeholder=""/>
+         </div>
+	  </div>
+
+
+
+
+		
+
+	
+	<div class="control-group">
+			<div class="controls">
+				<input type="hidden" name="email_create" value="1">
+				<input type="hidden" name="is_new_customer" value="1">
+                <input  class="btn btn-large btn-success" type="submit" value="ADD PRODUCT" />
+			</div>
+		</div>		
+	</form>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<!-- MainBody End ============================= -->
+{% endblock %}

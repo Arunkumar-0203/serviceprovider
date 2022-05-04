@@ -1,0 +1,64 @@
+{% extends 'user/user_base.html' %}
+{% load static %}
+{% block content %}
+<!-- Header End====================================================================== -->
+<div id="carouselBlk">
+	<div id="myCarousel" >
+		<div class="carousel-inner">
+		  <div class="item active">
+		  <div class="container">
+			<a href="register.html"><img style="width:100%" src="{% static 'themes/images/carousel/slider1.jpg' %}" alt="special offers"/></a>
+			<div class="carousel-caption">
+				  <h4>Second Thumbnail label</h4>
+				  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+				</div>
+		  </div>
+		  </div>
+
+		</div>
+		<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+		<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+	  </div> 
+</div>
+<div id="mainBody" style="padding-left: 180px;">
+	<table class="table table-bordered table-striped table-hover" style="background-color: #002633;width: 1000px;">
+
+                                 <th class="success" style="color: black;">Product Name</th>
+                                 <th class="success" style="color: black;">Image</th>
+                                 <th class="success" style="color: black;">Price</th>
+                                 <th class="success" style="color: black;">Quantity</th>
+                                 <th class="success" style="color: black;">Total</th>
+                                 <th class="success" style="color: black;">Reject</th>
+                                 {% for c in CRT %}
+
+                                <tr style="background-color:white;width: 700px;">
+                                    <td>{{ c.Product.pname}}</td>
+                                    <td><img style="max-width: 200px;max-height:140px;" src="/media/{{ c.Product.img }}"></td>
+                                    <td>{{ c.Product.price }}</td>
+                                    <td>{{ c.quantity }}</td>
+                                    <td>{{ c.total }}</td>
+
+
+
+{#                                    <td><button style="background-color:lightslategray"><a href="approve?id={{ us.user_id}}" class=" btn btn-success" style="color:black">Approve</a></button></td>#}
+                                    <td><button style="background-color:lightslategray"><a href="rejectcart?id={{ c.id}}" class=" btn btn-danger" style="color:black">Reject</a></button></td>
+
+                                </tr>
+
+
+
+                               {% endfor %}
+                            </table>
+                             <table class="table table-bordered table-striped table-hover" style="background-color: #002633;width: 700px;">
+
+                     <th class="success" style="color: white;">Total Amound :-  </th>
+
+                         <td>
+                        <button style="background-color:darkgreen"><a href="checkout1" class="btn btn-primary py-3 px-5">Proceed To CheckOut</a></button>
+                         </td>
+
+
+
+                 </table>
+</div>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'deliveryboy/delivery_base.html' %}
+{% load static %}
+{% block content %}
+<!-- Header End====================================================================== -->
+<div id="carouselBlk">
+	<div id="myCarousel" >
+		<div class="carousel-inner">
+		  <div class="item active">
+		  <div class="container">
+			<a href="register.html"><img style="width:100%" src="{% static 'themes/images/carousel/slider1.jpg' %}" alt="special offers"/></a>
+			<div class="carousel-caption">
+				  <h4>Second Thumbnail label</h4>
+				  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+				</div>
+		  </div>
+		  </div>
+
+		</div>
+		<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+		<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+	  </div> 
+</div>
+<div id="mainBody" style="padding-left: 180px;" >
+	<table class="table table-bordered table-striped table-hover" style="background-color: #002633;width: 1000px;">
+
+                                 <th class="success" style="color: black;">User Name</th>
+                                 <th class="success" style="color: black;">Contact Number</th>
+                                 <th class="success" style="color: black;">Location</th>
+                                 <th class="success" style="color: black;">Orderd Products</th>
+
+                                 <th class="success" style="color: black;">Delivery Status</th>
+
+                                 {% for s in F %}
+
+                                <tr style="background-color:white;width: 700px;">
+                                    <td>{{ s.USER.user.first_name }}</td>
+                                    <td>{{ s.USER.phone }}</td>
+                                    <td>{{ s.USER.place }}</td>
+                                    <td>{{ s.prodt.pname}}
+
+                                    </td>
+{#                                 <td><img style="max-width: 200px;max-height:140px;" src="/media/{{ sh.prodt.img }}"></td>#}
+{#                                <td>{{ s.delivery }}</td>#}
+                                      <td><button style="background-color:lightslategray"><a href="order_taked?id={{ s.id }}&userid={{ s.USER_id }}" class=" btn btn-success" style="color:black">Order Take</a></button></td>
+                                </tr>
+
+
+                              {% endfor %}
+                            </table>
+</div>
+{% endblock %}
